@@ -1,11 +1,21 @@
 using UnityEngine;
 
-public class PlayerGrowth : MonoBehaviour
+[RequireComponent(typeof(ParticleSystem))]
+[RequireComponent(typeof(Collider))]
+public class TriggerParticleEffect : MonoBehaviour
 {
-    // Function to increase the player's scale by 10%
-    public void GrowPlayer()
+    private ParticleSystem particleSystem;
+
+    private void Awake()
     {
-        // Increase the scale by 10%
-        transform.localScale *= 1.1f;
+        particleSystem = GetComponent<ParticleSystem>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player")) // Replace with your desired tag
+        {
+            particleSystem.Emit(10); // Emit 10 particles
+        }
     }
 }
