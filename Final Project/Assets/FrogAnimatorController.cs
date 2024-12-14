@@ -57,4 +57,13 @@ public class FrogAnimatorController : MonoBehaviour
     {
         canMove = false; // Disable movement
     }
+
+    // Method to trigger the "isHit" animation
+    public void TriggerHit()
+    {
+        if (animator != null)
+        {
+            animator.SetTrigger("isHit"); // Trigger the "isHit" animation
+        }
+    }
 }
